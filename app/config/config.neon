@@ -1,0 +1,38 @@
+#
+# WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
+# https://nette.org/security-warning
+#
+parameters:
+    database:
+        host: localhost
+        username: root
+        password:
+        database: movie
+        lazy: yes
+
+    services:
+        connection:
+            class: DibiConnection(%database%)
+
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+
+session:
+	expiration: 14 days
+
+
+services:
+	authenticator: \App\Authenticator
+	- App\Forms\FormFactory
+	- App\Forms\SignInFormFactory
+	- App\Forms\SignUpFormFactory
+	- App\Model\MovieManager
+	- App\Model\UserManager
+	- App\simple_html_dom
+
+	router: App\RouterFactory::createRouter
+

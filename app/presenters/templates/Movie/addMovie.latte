@@ -1,0 +1,10 @@
+{block content}
+    {form addMovie}
+        <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+
+        {label csfd_link}
+        {input csfd_link}
+
+        {input submit}
+    {/form}
+{/block}

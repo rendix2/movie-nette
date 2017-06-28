@@ -1,0 +1,22 @@
+{block content}
+<h1 n:block=title>Přihlášení</h1>
+{*
+{form signInForm}
+
+    {label user_name}
+    {input user_name}
+
+    {label user_password}
+    {input user_password}
+
+    {input submit}
+{/form}
+*}
+{control signInForm}
+
+{* OR
+{import '../components/form.latte'}
+{include form signInForm}
+*}
+
+<p><a n:href="up">Registrace</a></p>

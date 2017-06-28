@@ -1,0 +1,11 @@
+{block content}
+    {if !$user->isLoggedIn()}
+    <div id="main-button">
+        <a href="./?akce=register" class="main-button">RYCHLÁ REGISTRACE</a><a href="{link Sign:in}" class="main-button">PŘIHLÁŠENÍ</a>
+    </div>
+        {else}
+        <div id="main-button">
+            <a href="{link Movie:addMovie}" class="main-button">PŘIDAT FILM</a><a href="{link Sign:out}" class="main-button">ODHLÁŠENÍ</a>
+        </div>
+        {/if}
+{/block}

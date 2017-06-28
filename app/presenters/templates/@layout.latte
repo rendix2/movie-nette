@@ -1,0 +1,47 @@
+{**
+ * @param string   $basePath web base path
+ * @param array    $flashes  flash messages
+ *}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movies</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700&subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{$basePath}/css/main.css">
+    <link rel="stylesheet" type="text/css" href="{$basePath}/css/style.css">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div id="top-panel"></div>
+	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+
+<div id="main-panel">
+    <div class="panel-text-wrap">
+        <h2>Zadejte název filmu, který se vám líbí</h2>
+    </div>
+    <div id="search-wrap">
+        <form method="post" action="?akce=search" id="myform" >
+            <input type="search" name="search"  id="search" class="search-live" placeholder="Zadejte prosím název filmu" autocomplete="off" />
+            <input id="search-button" name="test" type="submit" value="">
+            <div id="result-live"></div>
+            <p id="mysubmit">Zobrazit všechny výsledky</p>
+        </form>
+    </div>
+    <div class="panel-text-wrap">
+        <p id="search-info">Zadejte co nejpřesnější název filmu...</p>
+    </div>
+</div>
+
+
+	{include content}
+	{block scripts}
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
+	<script src="{$basePath}/js/main.js"></script>
+        <script src="{$basePath}/js/main2.js"></script>
+	{/block}
+
+</body>
+</html>
