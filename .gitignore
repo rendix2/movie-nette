@@ -7,5 +7,5 @@ vendor/*
 app/config/config.local.neon
 .idea/*
 /log/*
-.gitignore
+
 
