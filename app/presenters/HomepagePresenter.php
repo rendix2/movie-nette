@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Presenters;
+	namespace App\Presenters;
 
-use Nette;
-use App\Model;
+	use App\Model;
+	use Nette;
 
 
-class HomepagePresenter extends BasePresenter
-{
-	public function renderDefault()
-	{
-		$this->template->anyVariable = 'any value';
+	class HomepagePresenter extends BasePresenter {
+		public function renderDefault () {
+			$this->template->anyVariable = 'any value';
+		}
 	}
-}

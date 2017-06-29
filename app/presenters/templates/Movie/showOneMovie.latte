@@ -3,7 +3,9 @@
     <h1>{$movie->movie_name_czech}</h1>
     <h2>{$movie->movie_name_origin}</h2>
     <h3>{$movie->movie_year}</h3>
-    <img src="../../images/{$movie->movie_picture}.jpg" alt="{$movie->movie_name_czech}-{$movie->movie_name_origin}/{$movie->movie_year}" title="{$movie->movie_name_czech}-{$movie->movie_name_origin}/{$movie->movie_year}">
+    <img src="../../images/{$movie->movie_picture}.jpg"
+         alt="{$movie->movie_name_czech}-{$movie->movie_name_origin}/{$movie->movie_year}"
+         title="{$movie->movie_name_czech}-{$movie->movie_name_origin}/{$movie->movie_year}">
     <div>{$movie->movie_description}</div>
 
     Doporučené filmy:
@@ -12,7 +14,9 @@
         <h3>{$relatedMovie->movie_name_origin}</h3>
         <h4>{$relatedMovie->movie_year}</h4>
         <span>Hodnocení vazby:{$relatedMovie->count_likes}</span>
-        <img src="../../images/{$relatedMovie->movie_picture}.jpg" alt="{$relatedMovie->movie_name_czech}-{$relatedMovie->movie_name_origin}/{$relatedMovie->movie_year}" title="{$relatedMovie->movie_name_czech}-{$relatedMovie->movie_name_origin}/{$relatedMovie->movie_year}">
+        <img src="../../images/{$relatedMovie->movie_picture}.jpg"
+             alt="{$relatedMovie->movie_name_czech}-{$relatedMovie->movie_name_origin}/{$relatedMovie->movie_year}"
+             title="{$relatedMovie->movie_name_czech}-{$relatedMovie->movie_name_origin}/{$relatedMovie->movie_year}">
         <div>{$relatedMovie->movie_description}</div>
     {/foreach}
 {/block}
