@@ -6,7 +6,6 @@
 	use Nette\Security\AuthenticationException;
 	use Nette\Security\IAuthenticator;
 	use Nette\Security\Identity;
-	use Tracy\Debugger;
 
 	class Authenticator implements IAuthenticator {
 
@@ -16,12 +15,13 @@
 		 * @throws AuthenticationException
 		 */
 		public function authenticate ( array $credentials ) {
-			list($username, $password) = $credentials;
+			list( $username, $password ) = $credentials;
 
-			$row = \dibi::select ( 'user_id, user_name, user_password, user_role_id' )->from( Tables::USERS_TABLE )
-			->where
-			( 'user_name = %s', $username )
-			            ->fetch ();
+			$row = \dibi::select ( 'user_id, user_name, user_password, user_role_id' )->from ( Tables::USERS_TABLE )
+			            ->where
+			            ( 'user_name = %s', $username )
+			            ->fetch ()
+			;
 
 			if ( !$row ) {
 				throw new AuthenticationException( 'The username is incorrect.', self::IDENTITY_NOT_FOUND );

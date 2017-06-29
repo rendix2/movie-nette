@@ -18,12 +18,23 @@
 			return \dibi::getInsertId ();
 		}
 
+		public function addRelatedMovie ( $movie_id, $related_movie_id, $user_id ) {
+			return \dibi::insert ( self::RELATED_MOVIES_TABLE, [ 'user_id'          => $user_id, 'movie_id' => $movie_id,
+			                                                     'movie_related_id' => $related_movie_id,
+			] )->execute ()
+			;
+		}
+
 		public function checkCsfdIdExists ( $id ) {
 			return \dibi::select ( '1' )->from ( self::MOVIES_TABLE )->where ( 'movie_csfd_id = %i', $id )->fetch ();
 		}
 
 		public function deleteMovie ( $id ) {
 			return \dibi::delete ( self::MOVIES_TABLE )->where ( 'movie_id = %i', $id )->execute ();
+		}
+
+		public function deleteRelationMovie ( $relation_id ) {
+			return \dibi::delete ( self::RELATED_MOVIES_TABLE )->where ( 'relation_id = %i', $relation_id )->execute ();
 		}
 
 		public function getGetMovies () {
@@ -46,23 +57,17 @@
 			return \dibi::select ( '*' )->from ( self::MOVIES_TABLE )->where ( 'movie_name LIKE %s', $name )->fetchAll ();
 		}
 
-		public function setLike($relation_id, $user_id){
-			return \dibi::insert(self::RELATED_MOVIES_LIKES_TABLE, [ 'relation_id' => $relation_id, 'user_id' =>
-			$user_id ])->execute();
+		public function setLike ( $relation_id, $user_id ) {
+			return \dibi::insert ( self::RELATED_MOVIES_LIKES_TABLE, [ 'relation_id' => $relation_id, 'user_id' =>
+			$user_id,
+			] )->execute ()
+			;
 		}
 
-		public function unsetLike($relation_id, $user_id){
-			return \dibi::delete(self::RELATED_MOVIES_LIKES_TABLE)->where('relation_id = %i', $relation_id)
-			->where('user_id = %i', $user_id)->execute();
-		}
-
-		public function addRelatedMovie($movie_id, $related_movie_id, $user_id){
-			return \dibi::insert(self::RELATED_MOVIES_TABLE, ['user_id' => $user_id, 'movie_id' => $movie_id,
-			'movie_related_id' => $related_movie_id])->execute();
-		}
-
-		public function deleteRelationMovie($relation_id){
-			return \dibi::delete(self::RELATED_MOVIES_TABLE)->where('relation_id = %i', $relation_id)->execute();
+		public function unsetLike ( $relation_id, $user_id ) {
+			return \dibi::delete ( self::RELATED_MOVIES_LIKES_TABLE )->where ( 'relation_id = %i', $relation_id )
+			            ->where ( 'user_id = %i', $user_id )->execute ()
+			;
 		}
 
 	}

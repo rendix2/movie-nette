@@ -14,11 +14,11 @@
 		private $userManager;
 
 		public function __construct ( UserManager $userManager ) {
-			parent::__construct();
+			parent::__construct ();
 			$this->userManager = $userManager;
 		}
 
-		public function renderLogIn () {
+		private function actionActivate ( $code ) {
 
 		}
 
@@ -26,7 +26,11 @@
 
 		}
 
-		public function renderRegister () {
+		private function generatePasswordHash ( $password ) {
+			return hash ( 'sha512', $password );
+		}
+
+		public function renderChangeMail () {
 
 		}
 
@@ -34,11 +38,11 @@
 
 		}
 
-		public function renderChangeMail () {
+		public function renderLogIn () {
 
 		}
 
-		private function actionActivate ( $code ) {
+		public function renderRegister () {
 
 		}
 
@@ -46,12 +50,8 @@
 
 		}
 
-		private function validateEmail($email){
+		private function validateEmail ( $email ) {
 			return '';
-		}
-
-		private function generatePasswordHash($password){
-			return hash('sha512', $password);
 		}
 
 	}
