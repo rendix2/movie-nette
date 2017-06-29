@@ -21,7 +21,7 @@
 		private $movieManager;
 
 		public function __construct ( MovieManager $movieManager ) {
-			parent::__construct();
+			parent::__construct ();
 			$this->movieManager = $movieManager;
 		}
 

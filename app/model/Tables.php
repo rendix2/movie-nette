@@ -10,8 +10,8 @@
 
 	class Tables {
 
-		const MOVIES_TABLE = 'movies';
-		const USERS_TABLE  = 'users';
-		const RELATED_MOVIES_TABLE = 'related_movies';
+		const MOVIES_TABLE               = 'movies';
 		const RELATED_MOVIES_LIKES_TABLE = 'related_movies_likes';
+		const RELATED_MOVIES_TABLE       = 'related_movies';
+		const USERS_TABLE                = 'users';
 	}
